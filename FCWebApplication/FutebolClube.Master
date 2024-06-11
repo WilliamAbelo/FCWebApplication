@@ -65,10 +65,10 @@
                 <input runat="server" id="txbDtNascimento" placeholder="Data de Nascimento" title="Apelido" type="date" />
             <br />
                 <label for="txbAltura">Altura</label>
-                <input runat="server" id="txbAltura" type="number" placeholder="Altura" title="Altura"/>
+                <input runat="server" id="txbAltura" type="number" placeholder="Altura" title="Altura"  step="0.1" />
             <br />
                 <label for="txbPeso">Peso</label>
-                <input runat="server" id="txbPeso" type="number" placeholder="Peso" title="Peso" />
+                <input runat="server" id="txbPeso" type="number" placeholder="Peso" title="Peso"  step="0.1" />
             <br />
                 <label for="txbPosicao">Posição</label>
                 <input runat="server" id="txbPosicao" type="text" placeholder="Posição" title="Posicao"/>

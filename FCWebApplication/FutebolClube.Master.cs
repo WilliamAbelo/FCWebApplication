@@ -3,6 +3,7 @@ using FCWebApplication.Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Web;
 using System.Web.UI.WebControls;
 
@@ -133,8 +134,8 @@ namespace FCWebApplication
                     nome = txbNome.Value,
                     apelido = txbApelido.Value,
                     nascimento = DateTime.Parse(txbDtNascimento.Value),
-                    altura = decimal.Parse(txbAltura.Value),
-                    peso = decimal.Parse(txbPeso.Value),
+                    altura = decimal.Parse(txbAltura.Value, CultureInfo.InvariantCulture),
+                    peso = decimal.Parse(txbPeso.Value, CultureInfo.InvariantCulture),
                     posicao = txbPosicao.Value,
                     numero = int.Parse(txbNumero.Value)
                 };

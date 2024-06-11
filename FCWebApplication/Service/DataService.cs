@@ -45,7 +45,7 @@ namespace FCWebApplication
             }
             if (apelido != "" && apelido != null)
             {
-                command.Parameters.AddWithValue("@apelido", apelido);
+                command.Parameters.AddWithValue("@apelido", apelido.ToLower());
             }
             List<Jogador> jogadores = new List<Jogador>();
             using (SqlDataReader reader = command.ExecuteReader())
@@ -221,7 +221,7 @@ namespace FCWebApplication
                 strFilter += " numero = @numero ";
                 if (apelido != "" && apelido != null)
                 {
-                    strFilter += " and apelido = @apelido ";
+                    strFilter += " and lower(apelido) = @apelido ";
                 }
                 
             }
