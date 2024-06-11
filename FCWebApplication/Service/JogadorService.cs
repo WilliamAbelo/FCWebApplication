@@ -44,12 +44,17 @@ namespace FCWebApplication.Service
             return jogador;
         }
 
-        public List<Jogador> ListarJogadores()
+        public List<Jogador> ListarJogadores(string numero = null, string apelido = null, string order = "asc")
         {
             List<Jogador> jogadores = new List<Jogador>();
-            jogadores = _dataService.SelectPlayers();
+            jogadores = _dataService.SelectPlayers(order, numero, apelido);
 
             return jogadores;
+        }
+
+        public void DeletaJogador(int id)
+        {
+            _dataService.DeletePlayer(id);
         }
     }
 }

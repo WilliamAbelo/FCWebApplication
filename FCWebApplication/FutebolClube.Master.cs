@@ -3,6 +3,7 @@ using FCWebApplication.Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Web;
 using System.Web.UI.WebControls;
 
 namespace FCWebApplication
@@ -21,21 +22,37 @@ namespace FCWebApplication
         }
         private void FeedTable(List<Jogador> jogadores, DataTable dataTable)
         {
-
-            for (int i = 0; i < jogadores.Count; i++)
+            if (jogadores.Count > 0)
             {
-                Jogador jogador = jogadores[i];
+                for (int i = 0; i < jogadores.Count; i++)
+                {
+                    Jogador jogador = jogadores[i];
+                    dataTable.Rows.Add(
+                       jogador.id.ToString(),
+                       jogador.numero.ToString(),
+                       jogador.apelido.ToString(),
+                       jogador.posicao.ToString(),
+                       jogador.idade.ToString(),
+                       jogador.altura.ToString(),
+                       jogador.peso.ToString(),
+                       jogador.imc.ToString(),
+                       jogador.imc_status.ToString()
+                   );
+                   GridView1.DataSource = dataTable;
+                }
+            } else
+            {
                 dataTable.Rows.Add(
-                   jogador.id.ToString(),
-                   jogador.numero.ToString(),
-                   jogador.apelido.ToString(),
-                   jogador.posicao.ToString(),
-                   jogador.idade.ToString(),
-                   jogador.altura.ToString(),
-                   jogador.peso.ToString(),
-                   jogador.imc.ToString(),
-                   jogador.imc_status.ToString()
-               ); ; ;
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty
+                );
                 GridView1.DataSource = dataTable;
             }
 
@@ -62,20 +79,27 @@ namespace FCWebApplication
         }
         protected void Grid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            var comando = e.CommandName;
+            lblAlert.Visible = false;
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = GridView1.Rows[index];
-            var id = int.Parse(row.Cells[1].Text);
-
-            btnEnviar.Text = "Editar";
-            lblId.InnerText = "Edição";
-            txbId.Value = id.ToString();
-            FeedTextBox(id);
+            bool converted;
+            int id;
+            converted = int.TryParse(row.Cells[2].Text, out id);
+            if(!converted) { lblAlert.Visible = true; }
+            else if (e.CommandName == "editar")
+            {
+                btnEnviar.Text = "Editar";
+                lblId.InnerText = "Edição";
+                txbId.Value = id.ToString();
+                FeedTextBox(id);
+            }
+            else if(e.CommandName == "deletar")
+            {
+                DeleteJogador(id);
+            }
         }
 
-        protected void Grid2_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
 
         private void FeedTextBox(int id)
         {
@@ -91,23 +115,37 @@ namespace FCWebApplication
             txbNumero.Value = jogador.numero.ToString();
         }
 
-        protected void btnEnviar_Click(object sender, EventArgs e)
+        private void DeleteJogador(int id)
         {
-            Jogador jogador = new Jogador
-            {
-                id = int.Parse(txbId.Value == "" ? "0" : txbId.Value),
-                nome = txbNome.Value,
-                apelido = txbApelido.Value,
-                nascimento = DateTime.Parse(txbDtNascimento.Value),
-                altura = decimal.Parse(txbAltura.Value),
-                peso = decimal.Parse(txbPeso.Value),
-                posicao = txbPosicao.Value,
-                numero = int.Parse(txbNumero.Value)
-            };
-
-            jogadorService.CriarJogador(jogador);
+            jogadorService.DeletaJogador(id);
             AtualizarTabela();
             LimparCampos();
+        }
+
+        protected void btnEnviar_Click(object sender, EventArgs e)
+        {
+            lblAlertCampos.Visible = false;
+            if (ValidarCampos())
+            {
+                Jogador jogador = new Jogador
+                {
+                    id = int.Parse(txbId.Value == "" ? "0" : txbId.Value),
+                    nome = txbNome.Value,
+                    apelido = txbApelido.Value,
+                    nascimento = DateTime.Parse(txbDtNascimento.Value),
+                    altura = decimal.Parse(txbAltura.Value),
+                    peso = decimal.Parse(txbPeso.Value),
+                    posicao = txbPosicao.Value,
+                    numero = int.Parse(txbNumero.Value)
+                };
+
+                jogadorService.CriarJogador(jogador);
+                AtualizarTabela();
+                LimparCampos();
+            } else
+            {
+                lblAlertCampos.Visible = true;
+            }
         }
 
         protected void btnLimpar_Click(object sender, EventArgs e)
@@ -117,6 +155,8 @@ namespace FCWebApplication
 
         private void LimparCampos()
         {
+            lblAlertCampos.Visible = false;
+            lblAlert.Visible = false;
             btnEnviar.Text = "Cadastrar";
             lblId.InnerText = "Cadastro";
             txbId.Value = string.Empty;
@@ -134,6 +174,50 @@ namespace FCWebApplication
             DataTable dataTable = CreateTable();
             List<Jogador> jogadores = jogadorService.ListarJogadores();
             FeedTable(jogadores, dataTable);
+        }
+
+        private bool ValidarCampos()
+        {
+            return (
+                txbNome.Value != "" &&
+                txbApelido.Value != "" &&
+                txbDtNascimento.Value != "" &&
+                txbAltura.Value != "" &&
+                txbPeso.Value != "" &&
+                txbPosicao.Value != "" &&
+                txbNumero.Value != ""
+                    );
+        }
+
+        protected void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = CreateTable();
+            List<Jogador> jogadores = new List<Jogador>(); 
+            jogadores = jogadorService.ListarJogadores(txbSearchNumero.Value, txbSearchApelido.Value, Order());
+            FeedTable(jogadores, dataTable);
+        }
+
+        protected void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            
+            DataTable dataTable = CreateTable();
+            List<Jogador> jogadores = new List<Jogador>();
+            jogadores = jogadorService.ListarJogadores(txbSearchNumero.Value, txbSearchApelido.Value, Order());
+            FeedTable(jogadores, dataTable);
+        }
+
+        private string Order()
+        {
+            string order = "asc";
+            if(lblOrder.InnerText == "v") {
+                order = "desc";
+                lblOrder.InnerText = "^";
+            } 
+            else {
+                order = "asc";
+                lblOrder.InnerText = "v";
+            }
+            return order;
         }
     }
 }

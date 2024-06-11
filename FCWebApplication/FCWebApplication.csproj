@@ -72,11 +72,11 @@
     <Content Include="App_Data\FCDatabase_log.ldf">
       <DependentUpon>FCDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="Images\rotate.png" />
     <Content Include="index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IJogador.cs" />
     <Compile Include="Model\Jogador.cs" />
     <Compile Include="Service\DataService.cs" />
     <Compile Include="Dtos\JogadorDto.cs" />
@@ -107,6 +107,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
