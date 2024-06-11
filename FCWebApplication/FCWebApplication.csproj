@@ -77,6 +77,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="nunit" Version="4.1.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="JogadorService.Test\UnitTest1.cs" />
     <Compile Include="Model\Jogador.cs" />
     <Compile Include="Service\DataService.cs" />
     <Compile Include="Dtos\JogadorDto.cs" />
@@ -98,6 +108,12 @@
     <Compile Include="Service\JogadorService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JogadorService.Test\JogadorService.Test.csproj" />
+    <Content Include="JogadorService.Test\obj\JogadorService.Test.csproj.nuget.dgspec.json" />
+    <Content Include="JogadorService.Test\obj\JogadorService.Test.csproj.nuget.g.props" />
+    <Content Include="JogadorService.Test\obj\JogadorService.Test.csproj.nuget.g.targets" />
+    <Content Include="JogadorService.Test\obj\project.assets.json" />
+    <Content Include="JogadorService.Test\obj\project.nuget.cache" />
     <None Include="packages.config" />
     <Content Include="FutebolClube.Master" />
     <None Include="Web.Debug.config">
