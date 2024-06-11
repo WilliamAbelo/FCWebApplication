@@ -5,6 +5,7 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
 
 - .Net Framework 4.7.2
 - Web Forms
+- SQL
 
 
 ## Rodando localmente
