@@ -1,8 +1,10 @@
 
 # Futebol Clube
 
-Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQL e o arquivo .mdf localizado na pasta App_Data. Consiste em uma tela com listagem, cadastro e edição de ateltas bem como calculo de IMC e classificação baseada neste calculo.
+Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQL em arquivo .mdf localizado na pasta App_Data. Consiste em uma tela com listagem, cadastro e edição de ateltas bem como calculo de IMC e classificação baseada neste calculo.
 
+- Net Framework 4.7.2
+- Nunit
 
 
 ## Rodando localmente
@@ -34,6 +36,14 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
 - Exclusão de Atletas
 
 - Filtro na Listagem de Atletas, por: Numero de camisa, Apelido e Classificação do IMC
+
+
+## Rodando os testes
+
+Para rodar os testes certifiquese que a dependencia Nunit esteja intalada e utilize a ferramenta de testes do Visual studio
+
+![run test](https://learn.microsoft.com/pt-br/visualstudio/test/media/vs-2022/test-explorer-groupby-state-17-0.png?view=vs-2017&viewFallbackFrom=vs-2022)
+
 
 
 ## Autores
