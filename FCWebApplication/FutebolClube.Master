@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FutebolClube.Master.cs" Inherits="FCWebApplication.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Futebol Clube</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <header>
+                <h1>Futebol Clube</h1>
+            </header>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">;                
+            </asp:ContentPlaceHolder>
+            <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="Grid_RowCommand">
+                 <Columns>
+                    <asp:ButtonField ButtonType="Button" CommandName="editar" HeaderText="Ação" ShowHeader="True" Text="Editar"/>
+                </Columns>
+                <AlternatingRowStyle BackColor="White" />
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
+            </asp:GridView>
+            <br />
+            <br />
+                <label runat="server" id="lblId" visible="true" />
+                <input runat="server" id="txbId" placeholder="Id" title="Id" type="text" visible="false" />
+            <br />
+                <label for="txbNome">Nome</label>
+                <input runat="server" id="txbNome" placeholder="Nome" title="Nome" type="text" />
+             <br />
+                 <label for="txbApelido">Apelido</label>
+                 <input runat="server" id="txbApelido" placeholder="Apelido" title="Apelido" type="text" />
+             <br />
+                <label for="txbDtNascimento">Data de Nascimento</label>
+                <input runat="server" id="txbDtNascimento" placeholder="Data de Nascimento" title="Apelido" type="date" />
+            <br />
+                <label for="txbAltura">Altura</label>
+                <input runat="server" id="txbAltura" type="number" placeholder="Altura" title="Altura"/>
+            <br />
+                <label for="txbPeso">Peso</label>
+                <input runat="server" id="txbPeso" type="number" placeholder="Peso" title="Peso" />
+            <br />
+                <label for="txbPosicao">Posição</label>
+                <input runat="server" id="txbPosicao" type="text" placeholder="Posição" title="Posicao"/>
+            <br />
+                <label for="txbNumero">Número Da Camisa</label>
+                <input runat="server" id="txbNumero" type="number" placeholder="Numero da Camisa" title="Numero"/>
+            </p>
+            <p>
+                 <asp:Button ID="btnEnviar" runat="server" Text="Cadastrar" OnClick="btnEnviar_Click"/>
+                 <asp:Button ID="btnLimpar" runat="server" Text="Limpar" OnClick="btnLimpar_Click"/>
+            </p>
+            <footer>
+                <p>Desenvolvido por William Abelo</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
