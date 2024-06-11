@@ -4,7 +4,6 @@
 Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQL em arquivo .mdf localizado na pasta App_Data. Consiste em uma tela com listagem, cadastro e edição de ateltas bem como calculo de IMC e classificação baseada neste calculo.
 
 - Net Framework 4.7.2
-- Nunit
 
 
 ## Rodando localmente
