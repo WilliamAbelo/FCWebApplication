@@ -1,7 +1,7 @@
 
 # Futebol Clube
 
-Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQL. Consiste em uma tela com listagem, cadastro e edição de ateltas bem como calculo de IMC e classificação baseada neste calculo.
+Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQL e o arquivo .mdf localizado na pasta App_Data. Consiste em uma tela com listagem, cadastro e edição de ateltas bem como calculo de IMC e classificação baseada neste calculo.
 
 
 
@@ -21,7 +21,10 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
 
 ![run project](https://user-images.githubusercontent.com/1798510/68414453-81092500-0190-11ea-8564-918bd89f0da5.png)
 
-[!WARNING] Certifique-se que estaja na pagina index.aspx (https://localhost:44309/index.aspx) apos rodar o projeto.
+4. Foi utilizado o Banco de Dados SQL Server nessa aplicação e o arquivo .mdf encontrasse na pasta App_Data, as configurações para o acesso ao banco estão no arquivo ***Web.config dentro do nó <connectionStrings>***
+
+> [!WARNING]
+> Certifique-se que estaja na pagina index.aspx (https://localhost:44309/index.aspx) apos rodar o projeto.
 
 ## Funcionalidades
 
