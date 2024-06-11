@@ -17,12 +17,12 @@ namespace FCWebApplication
             return con;
         }
 
-        public List<Jogador> SelectPlayers()
+        public List<Jogador> SelectPlayers(string order, string numero = null, string apelido = null)
         {
             SqlConnection con = DbConnection();
             con.Open();
             Console.WriteLine("Connection opened");
-
+            string filtro = MakeFilter(numero, apelido);
             SqlCommand command = new SqlCommand("Select " +
                 "id, " +
                 "nome, " +
@@ -37,8 +37,16 @@ namespace FCWebApplication
                 "IMC_Status, " +
                 "criado_em, " +
                 "atualizado_em " +
-                "from Jogadores", con);
-
+                "from Jogadores " +
+                 filtro  +
+                "order by IMC " + order, con);
+            if (numero != "" && numero != null) { 
+                command.Parameters.AddWithValue("@numero", numero); 
+            }
+            if (apelido != "" && apelido != null)
+            {
+                command.Parameters.AddWithValue("@apelido", apelido);
+            }
             List<Jogador> jogadores = new List<Jogador>();
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -133,7 +141,7 @@ namespace FCWebApplication
                 "numero = @numero, " +
                 "IMC = @imc, " +
                 "IMC_Status = @imc_status, " +
-                "atualizado_em = getdate()" +
+                "atualizado_em = getdate() " +
                 "where id = @id", con);
             command.Parameters.AddWithValue("@id", jogador.id);
             command.Parameters.AddWithValue("@nome", jogador.nome);
@@ -192,6 +200,34 @@ namespace FCWebApplication
             command.ExecuteNonQuery();
             con.Close();
             Console.WriteLine("Connection closed");
+        }
+
+        public void DeletePlayer(int id)
+        {
+            SqlConnection con = DbConnection();
+            con.Open();
+            Console.WriteLine("Connection opened");
+            SqlCommand command = new SqlCommand("delete from Jogadores where id = @id", con);
+            command.Parameters.AddWithValue("@id", id);
+            command.ExecuteNonQuery();
+            con.Close();
+            Console.WriteLine("Connection closed");
+        }
+
+        private string MakeFilter(string numero, string apelido)
+        {
+            string strFilter = " where ";
+            if (numero != "" && numero != null) {
+                strFilter += " numero = @numero ";
+                if (apelido != "" && apelido != null)
+                {
+                    strFilter += " and apelido = @apelido ";
+                }
+                
+            }
+            else if (apelido != "" && apelido != null) { strFilter += "apelido = @apelido "; }
+            else { return ""; }
+            return strFilter;
         }
     }
 }

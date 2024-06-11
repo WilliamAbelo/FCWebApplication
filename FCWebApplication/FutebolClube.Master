@@ -8,7 +8,7 @@
     <title>Futebol Clube</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-</head>
+    </head>
 <body>
     <form id="form1" runat="server">
         <div>
@@ -17,9 +17,24 @@
             </header>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">;                
             </asp:ContentPlaceHolder>
-            <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="Grid_RowCommand">
-                 <Columns>
-                    <asp:ButtonField ButtonType="Button" CommandName="editar" HeaderText="Ação" ShowHeader="True" Text="Editar"/>
+
+            <p>
+                <label runat="server" for="txbSearchNumero" Text="Numero da Camisa">Numero da Camisa</label>
+                <input id="txbSearchNumero" runat="server" placeholder="Numero da Camisa" title="Id" type="number"></input>
+
+                <label runat="server" for="txbSearchApelido" Text="Apelido"> Apelido</label>
+                <input id="txbSearchApelido" runat="server" placeholder="apelido" title="Apelido" type="text"></input>
+
+                <asp:Button ID="btnPesquisar" runat="server" Text="Pesquisar" OnClick="btnPesquisar_Click"/>
+                <asp:Button ID="btnOrdenar" runat="server" Text="Ordenar Por IMC" OnClick="btnOrdenar_Click"/>
+                <label runat="server" id="lblOrder" for="btnOrdenar" Text="v">v</label>
+                
+            </p>
+
+            <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="Grid_RowCommand" Width="474px">
+            <Columns>
+                    <asp:ButtonField ButtonType="Button" CommandName="editar" Text="Editar"/>
+                     <asp:ButtonField ButtonType="Button" CommandName="deletar" Text="Deletar"/>
                 </Columns>
                 <AlternatingRowStyle BackColor="White" />
                 <EditRowStyle BackColor="#7C6F57" />
@@ -33,6 +48,8 @@
                 <SortedDescendingCellStyle BackColor="#D4DFE1" />
                 <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
+            
+            <asp:Label ID="lblAlert" runat="server" Text="Linha invalida" visible="False" BorderColor="#CC0000" BorderStyle="Solid" ForeColor="#CC0000"></asp:Label>
             <br />
             <br />
                 <label runat="server" id="lblId" visible="true" />
@@ -58,7 +75,8 @@
             <br />
                 <label for="txbNumero">Número Da Camisa</label>
                 <input runat="server" id="txbNumero" type="number" placeholder="Numero da Camisa" title="Numero"/>
-            </p>
+            <br />
+                <asp:Label ID="lblAlertCampos" runat="server" BorderColor="#CC0000" BorderStyle="Solid" ForeColor="#CC0000" Text="Preencha todos os campos" Visible="False"></asp:Label>
             <p>
                  <asp:Button ID="btnEnviar" runat="server" Text="Cadastrar" OnClick="btnEnviar_Click"/>
                  <asp:Button ID="btnLimpar" runat="server" Text="Limpar" OnClick="btnLimpar_Click"/>
