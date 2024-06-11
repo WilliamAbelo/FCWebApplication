@@ -40,7 +40,7 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
 
 ## Rodando os testes
 
-Para rodar os testes certifiquese que a dependencia Nunit esteja intalada e utilize a ferramenta de testes do Visual studio
+Para rodar os testes certifique-se que a dependencia Nunit esteja intalada e utilize a ferramenta de testes do Visual studio
 
 ![run test](https://learn.microsoft.com/pt-br/visualstudio/test/media/vs-2022/test-explorer-groupby-state-17-0.png?view=vs-2017&viewFallbackFrom=vs-2022)
 
