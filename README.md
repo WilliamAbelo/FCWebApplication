@@ -18,15 +18,15 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
 
 2. Rodando a aplicação pelo prompt
     - ***certifique-se de estar na pasta do projeto***
-    - Restaures os pacotes Nuget[^1]
+    - Restaures os pacotes Nuget [^1]
         ```bash
         dotnet restore
         ```
-    - Build o projeto[^2]
+    - Build o projeto [^2]
         ```bash
         dotnet build
         ```
-    - Rode o projeto[^3]
+    - Rode o projeto [^3]
         ```bash
         dotnet run --project FCWebApplication
         ```
@@ -34,7 +34,7 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
 
    [^2]: [Dotnet Build](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build)
     
-   [^3]: [Dotnet run](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run)
+   [^3]: [Dotnet Run](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run)
 
 3. Rodando a aplicação pelo Visual Studio
 
@@ -55,15 +55,21 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
 - Adição de Atletas
 - Edição de Atletas
 - Exclusão de Atletas
-
-- Filtro na Listagem de Atletas, por: Numero de camisa, Apelido e Classificação do IMC
+- Calculo do IMC e Classificação do Atleta baseado no Calculo.
+- Filtro na Listagem de Atletas, por: Numero de Camisa, Apelido e Classificação do IMC
 
 
 ## Rodando os testes
+1. Rodando os testes pelo prompt [^4]
+  ```bash
+  dotnet test
+  ```
+[^4]: [Dotnet Test](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test)
 
-Para rodar os testes certifique-se que a dependencia Nunit esteja intalada e utilize a ferramenta de testes do Visual studio
-
-![run test](https://learn.microsoft.com/pt-br/visualstudio/test/media/vs-2022/test-explorer-groupby-state-17-0.png?view=vs-2017&viewFallbackFrom=vs-2022)
+2. Rodando os testes com o visual studio
+   
+   Para rodar os testes certifique-se que a dependencia Nunit esteja intalada e utilize a ferramenta de testes do Visual studio
+  ![run test](https://learn.microsoft.com/pt-br/visualstudio/test/media/vs-2022/test-explorer-groupby-state-17-0.png?view=vs-2017&viewFallbackFrom=vs-2022)
 
 
 
