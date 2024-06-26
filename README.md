@@ -24,9 +24,9 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
         ```
     - Build o projeto[^2]
         ```bash
-        dotnet build[^3]
+        dotnet build
         ```
-    - Rode o projeto
+    - Rode o projeto[^3]
         ```bash
         dotnet run --project FCWebApplication
         ```
