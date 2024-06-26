@@ -16,13 +16,33 @@ Aplicação Web utilizando .Net Framework 4.7.2 com WebForms e Banco de dados SQ
   git clone https://github.com/WilliamAbelo/FCWebApplication.git
 ```
 
-2. Abra a aplicação com o Visual Studio
+2. Rodando a aplicação pelo prompt
+    - ***certifique-se de estar na pasta do projeto***
+    - Restaures os pacotes Nuget[^1]
+        ```bash
+        dotnet restore
+        ```
+    - Build o projeto[^2]
+        ```bash
+        dotnet build[^3]
+        ```
+    - Rode o projeto
+        ```bash
+        dotnet run --project FCWebApplication
+        ```
+   [^1]: [Dotnet Restore](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-restore)
 
-![open project](https://learn.microsoft.com/fr-fr/visualstudio/ide/media/vs-2019/open-local-project-from-cloned-repo.png?view=vs-2017&viewFallbackFrom=vs-2022)
+   [^2]: [Dotnet Build](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build)
+    
+   [^3]: [Dotnet run](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run)
 
-3. Apos aberto o projeto, rode com o iis express
+3. Rodando a aplicação pelo Visual Studio
 
-![run project](https://user-images.githubusercontent.com/1798510/68414453-81092500-0190-11ea-8564-918bd89f0da5.png)
+    - Abra a Solução pelo Visual Studio
+        ![open project](https://learn.microsoft.com/fr-fr/visualstudio/ide/media/vs-2019/open-local-project-from-cloned-repo.png?view=vs-2017&viewFallbackFrom=vs-2022)
+
+    - Apos aberto o projeto, rode com o iis express
+        ![run project](https://user-images.githubusercontent.com/1798510/68414453-81092500-0190-11ea-8564-918bd89f0da5.png)
 
 4. Foi utilizado o Banco de Dados SQL Server nessa aplicação e o arquivo .mdf encontrasse na pasta App_Data, as configurações para o acesso ao banco estão no arquivo ***Web.config dentro do nó <connectionStrings>***
 
